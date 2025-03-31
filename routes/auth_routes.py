@@ -90,9 +90,8 @@ def login():
 
     # Create a JWT token with the customer's email as identity
     token = create_jwt(identity=customer.email)
-    return jsonify({"message": "Login successful", "access_token": token, "user": {
+    return jsonify({"message": "Login successful", "access_token": token, "is_admin": customer.is_admin, "user": {
         "email": customer.email,
-        
         "name": customer.name
     } }), 200
 

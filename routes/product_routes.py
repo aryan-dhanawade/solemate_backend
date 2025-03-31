@@ -19,10 +19,11 @@ def get_products():
             "price": product.price,
             "stock_quantity": product.stock_quantity,
             "category_id": product.category.category_id if product.category else None,
-            
-            "category": product.category.name if product.category else None
+            "category": product.category.name if product.category else None,
+            "img_link": product.img_link
 
         })
+        print(product.img_link)
     return jsonify(data), 200
 
 @product_bp.route('/products/<int:product_id>', methods=['GET'])
