@@ -9,6 +9,7 @@ class Customer(db.Model):
     phone = db.Column(db.String(20), unique=True, nullable=False)
     address = db.Column(db.Text, nullable=False)
     password = db.Column(db.String(255), nullable=False) 
+    is_admin = db.Column(db.Boolean, default=False, nullable=False)
     
     # Relationship: A customer has many orders.
     orders = db.relationship('Order', backref='customer', lazy=True)

@@ -114,5 +114,6 @@ def profile():
         "name": customer.name,
         "email": customer.email,
         "phone": customer.phone,
-        "address": customer.address
+        "address": customer.address,
+        "is_admin": customer.is_admin
     }), 200
