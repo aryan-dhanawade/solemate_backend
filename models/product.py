@@ -8,6 +8,7 @@ class Product(db.Model):
     description = db.Column(db.Text)
     price = db.Column(db.Float, nullable=False)
     stock_quantity = db.Column(db.Integer, nullable=False)
+    img_link = db.Column(db.String(2083))
     
     # Foreign Key: Links to Category.
     category_id = db.Column(db.Integer, db.ForeignKey('category.category_id', ondelete='SET NULL'))
