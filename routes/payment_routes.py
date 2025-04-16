@@ -18,6 +18,7 @@ def process_payment():
     }
     """
     data = request.get_json()
+    print(data)
     required_fields = ["order_id", "payment_method", "amount"]
     if not data or not all(field in data for field in required_fields):
         return jsonify({"error": "Missing payment details"}), 400

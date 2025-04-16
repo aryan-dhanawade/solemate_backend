@@ -16,8 +16,8 @@ from app import app  # or import your Flask app from manage.py if that's where i
 
 with app.app_context():
     # Optional: Drop all tables (caution in production)
-    db.drop_all()
-    db.create_all()
+    # db.drop_all()
+    # db.create_all()
 
     # Seed Categories
     category_names = ["Sneakers", "Formal Shoes", "Athletic Shoes", "Boots", "Sandals"]

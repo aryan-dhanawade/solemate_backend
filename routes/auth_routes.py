@@ -52,7 +52,7 @@ def register():
     db.session.commit()
     token = create_jwt(identity=new_customer.email)
 
-    return jsonify({"message": "User registered successfully", "token": token, "user": {
+    return jsonify({"message": "User registered successfully", "access_token": token, "user": {
             "customer_id": new_customer.customer_id,
             "name": new_customer.name,
             "email": new_customer.email,
@@ -116,3 +116,22 @@ def profile():
         "address": customer.address,
         "is_admin": customer.is_admin
     }), 200
+
+
+@auth_bp.route("/subscribe", methods=["POST"])
+@jwt_required()
+def subscribe_to_newsletter():
+
+    """Subscribes the user with the email to the newsletter"""
+    data = request.get_json()
+    user_email = data["email"]
+    customer = Customer.query.filter_by(email=user_email).first()
+
+    if not customer:
+        return jsonify({"error": "User not found"}), 404
+    
+    customer.newsletter = True
+    db.session.commit()
+
+
+    return jsonify({"message": "Subscribed", "email": user_email}), 200

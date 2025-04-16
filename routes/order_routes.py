@@ -23,6 +23,7 @@ def checkout():
     }
     """
     data = request.get_json()
+    print(data)
     if not data or "items" not in data:
         return jsonify({"error": "No order items provided"}), 400
     items = data["items"]
